@@ -283,7 +283,11 @@ app.post('/api/comment/:id', async (req, res) => {
   }
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`🚀 Server is running on http://localhost:${port}`);
+// Start server after DB connection
+connectDB().then(() => {
+  app.listen(port, () => {
+    console.log(`🚀 Server is running on http://localhost:${port}`);
+  });
+}).catch((err) => {
+  console.error('❌ Failed to start server:', err);
 });
