@@ -15,10 +15,7 @@ let cachedClient = null;
 
 async function getCollections() {
   if (!cachedClient) {
-    cachedClient = new MongoClient(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    cachedClient = new MongoClient(process.env.MONGODB_URI);
     await cachedClient.connect();
     console.log('✅ MongoDB connected (cached)');
   }
