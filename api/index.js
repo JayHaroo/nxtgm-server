@@ -289,11 +289,9 @@ app.post('/api/comment/:id', async (req, res) => {
   }
 });
 
-// Only start locally, Vercel handles serverless endpoints
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(port, () => {
-    console.log(`🚀 Server is running on http://localhost:${port}`);
-  });
-}
+app.listen(port, () => {
+   console.log(`🚀 Server is running on http://localhost:${port}`);
+});
+
 
 module.exports = app; // Export for Vercel
